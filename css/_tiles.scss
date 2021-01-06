@@ -1,0 +1,68 @@
+@use 'constants';
+@use 'street';
+
+.container.even {
+  background: #f6f6f6;
+}
+
+.container.odd {
+  background: #ededed;
+}
+
+.tile {
+  width: constants.$tile-width;
+  height: constants.$tile-height;
+  box-sizing: border-box;
+  text-align: center;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform-origin: center;
+  //line-height: 1.1;
+  font-size: constants.$tile-width*0.18;
+  font-weight: bold;
+  //kerning-mode: ;
+  letter-spacing: constants.$tile-width*0.003;
+
+
+}
+
+.bottom {
+  .tile {
+    transform: translate(-50%, -50%)
+  }
+}
+
+.left {
+  position: relative;
+
+  .tile {
+    transform: translate(-50%, -50%) rotate(90deg);
+  }
+}
+
+.right {
+  position: relative;
+
+  .tile {
+    transform-origin: center;
+    transform: translate(-50%, -50%) rotate(-90deg);
+  }
+}
+
+.top {
+  position: relative;
+
+  .tile {
+    top: 50%;
+    left: 50%;
+    transform-origin: center;
+    transform: translate(-50%, -50%) rotate(-180deg);
+  }
+}
+
+
+span {
+  display: inline-block;
+  clear: left;
+}

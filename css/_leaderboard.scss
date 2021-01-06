@@ -1,0 +1,37 @@
+@use "constants";
+
+$square-size: 35px;
+
+.leaderboard {
+  width: constants.$sidebar-width;
+  display: grid;
+  grid-template-columns: 10% auto 20%;
+
+  .even {
+    background: #fff;
+  }
+
+  .odd {
+    background: #f6f6f6;
+  }
+
+}
+
+
+.leaderboard-color {
+  height: $square-size;
+  width: $square-size;
+}
+
+.leaderboard-name {
+  text-align: center;
+  line-height: $square-size;
+  flex: 1;
+}
+
+.leaderboard-money {
+  text-align: right;
+  line-height: $square-size;
+  padding-right: 5%;
+
+}

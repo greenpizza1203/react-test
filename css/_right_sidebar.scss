@@ -1,0 +1,20 @@
+@use 'constants';
+@use 'leaderboard';
+@use 'details';
+
+.right-sidebar {
+  float: right;
+  //display: flex;
+  //flex-flow: column;
+  //width: 200px;
+  position: absolute;
+  top: 0;
+  left: 1250px;
+  width: 350px;
+  height: constants.$square-size;
+}
+
+
+.dice {
+  height: 200px;
+}

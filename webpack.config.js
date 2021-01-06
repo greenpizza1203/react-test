@@ -1,15 +1,24 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const {CleanWebpackPlugin} = require("clean-webpack-plugin");
+const TerserPlugin = require("terser-webpack-plugin");
 
-module.exports = {
+let config = {
     resolve: {
-        extensions: [".js", ".tsx"]
+        extensions: [".js", ".ts", ".tsx"]
     },
-
+    output: {
+        path: path.resolve(__dirname, 'dist'),
+        pathinfo: false,
+    },
     module: {
         rules: [
             {
-                test: /\.tsx?$/,
+                test: /\.svg$/,
+                use: ["file-loader"]
+            },
+            {
+                test: [/\.tsx?$/],
                 use: [
                     {
                         loader: 'ts-loader',
@@ -20,21 +29,27 @@ module.exports = {
                     },
                 ],
             },
-            {
-                test: /\.scss$/i,
-                use: [
-                    // Creates `style` nodes from JS strings
-                    "style-loader",
-                    // Translates CSS into CommonJS
-                    "css-loader",
-                    // Compiles Sass to CSS
-                    "sass-loader",
-                ],
-            },
+
         ]
     },
-    plugins: [
-        new HtmlWebpackPlugin()
-    ],
-    devServer: {stats: "minimal", contentBase: path.join(__dirname, "public")},
+    plugins: [new HtmlWebpackPlugin()],
+    devServer: {stats: "minimal"},
 };
+
+module.exports = (env, options) => {
+    config.mode = options.mode || 'production';
+    if (config.mode === "production") {
+        config.plugins.push(new CleanWebpackPlugin())
+
+        config.optimization = {
+            minimize: true,
+            minimizer: [
+                new TerserPlugin({
+                    extractComments: false,
+                }),
+            ],
+        }
+    }
+
+    return config
+}

@@ -1,0 +1,9 @@
+$tile-ratio: 0.15;
+$square-size: 900px;
+$sidebar-width: (1600px - 900px)/2;
+$tile-width: $square-size * (1 - ($tile-ratio) * 2) / 9;
+$tile-height: $square-size * $tile-ratio;
+body {
+  width: 1600px;
+  height: 900px;
+}
