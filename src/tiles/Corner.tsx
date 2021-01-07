@@ -14,12 +14,11 @@ const corners = {
 
 export abstract class Corner extends React.Component<{ info: ICorner }> {
     render() {
-        // let strings = Object.keys(corners);
-        // console.log(this.props.info.split_name, strings[3])
-        // window["corners"] = corners;
-        let corner = corners[this.props.info.split_name];
+        let filename = this.props.info.split_name;
+        let Corner = corners[filename];
+        // console.log(Corner)
         return (
-            <img className="corner" src={corner}/>
+            <Corner className={filename}/>
         )
     }
 
