@@ -3,7 +3,9 @@
 
 .details {
   border-radius: 20px;
-  border: 10px solid black;
+  border: 10px solid;
+
+  transition: border-color 0.2s;
   width: 100%;
   position: absolute;
   bottom: 0;

@@ -29,7 +29,10 @@ export class Houses extends React.Component<{ level: number }> {
         const map = {house, hotel}
         return (
             <div className="houses">
-                {images.map((image, index) => <img src={map[image]} className={image} key={index}/>)}
+                {images.map((image, index) => {
+                    const Tag = map[image]
+                    return <Tag className={image} key={index}/>;
+                })}
             </div>
 
         )

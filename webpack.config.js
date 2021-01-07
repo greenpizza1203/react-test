@@ -15,59 +15,7 @@ let config = {
         rules: [
             {
                 test: /\.svg$/,
-                use: [{
-                    loader: "react-svg-loader", options: {
-                        cleanupAttrs: false,
-                        inlineStyles: false,
-                        removeDoctype: false,
-                        removeXMLProcInst: false,
-                        removeComments: false,
-                        removeMetadata: false,
-                        removeTitle: false,
-                        removeDesc: false,
-                        removeUselessDefs: false,
-                        removeXMLNS: false,
-                        removeEditorsNSData: false,
-                        removeEmptyAttrs: false,
-                        removeHiddenElems: false,
-                        removeEmptyText: false,
-                        removeEmptyContainers: false,
-                        removeViewBox: false,
-                        cleanupEnableBackground: false,
-                        minifyStyles: false,
-                        convertStyleToAttrs: false,
-                        convertColors: false,
-                        convertPathData: false,
-                        convertTransform: false,
-                        removeUnknownsAndDefaults: false,
-                        removeNonInheritableGroupAttrs: false,
-                        removeUselessStrokeAndFill: false,
-                        removeUnusedNS: false,
-                        prefixIds: false,
-                        cleanupIDs: false,
-                        cleanupNumericValues: false,
-                        cleanupListOfValues: false,
-                        moveElemsAttrsToGroup: false,
-                        moveGroupAttrsToElems: false,
-                        collapseGroups: false,
-                        removeRasterImages: false,
-                        mergePaths: false,
-                        convertShapeToPath: false,
-                        convertEllipseToCircle: false,
-                        sortAttrs: false,
-                        sortDefsChildren: false,
-                        removeDimensions: false,
-                        removeAttrs: false,
-                        removeAttributesBySelector: false,
-                        removeElementsByAttr: false,
-                        addClassesToSVGElement: false,
-                        addAttributesToSVGElement: false,
-                        removeOffCanvasPaths: false,
-                        removeStyleElement: false,
-                        removeScriptElement: false,
-                        reusePaths: false,
-                    }
-                }]
+                use: ['react-svg-loader']
             },
             {
                 test: [/\.tsx?$/],
@@ -83,6 +31,10 @@ let config = {
             },
 
         ]
+    },
+    devtool: false,
+    performance: {
+        hints: false
     },
     plugins: [],
     devServer: {stats: "minimal"},
