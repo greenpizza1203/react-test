@@ -4,6 +4,7 @@ import {Street} from "./street/Street";
 import {Tax} from "./Tax";
 import {DefaultTile} from "./DefaultTile";
 import {Corner} from "./Corner";
+import * as styles from "../../css/board/tile.module.scss"
 
 const componentMap = {
     Street, Tax, Corner
@@ -16,7 +17,8 @@ export class Tile extends React.Component<{ info: ITile, mouseOver: (ITile) => v
         const parity = info.position % 2 ? 'odd' : 'even';
         const TileType = componentMap[info.type] ?? DefaultTile;
         return (
-            <div className={`container ${location} ${parity}`} style={{gridColumn: column, gridRow: row}}
+            <div className={`${styles.container} ${styles[location]} ${styles[parity]}`}
+                 style={{gridColumn: column, gridRow: row}}
                  onMouseOver={() => this.props.mouseOver(this.props.info)}>
                 <TileType info={info}/>
             </div>

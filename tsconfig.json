@@ -5,10 +5,17 @@
     "esModuleInterop": true,
     "jsx": "react",
     "skipLibCheck": true,
-    "outDir": "dist"
-
+    "outDir": "dist",
+    "plugins": [
+      {
+        "name": "typescript-plugin-css-modules",
+        "options": {
+          "customMatcher": "\\.scss$"
+        }
+      }
+    ]
   },
   "exclude": [
     "node_modules"
-  ],
+  ]
 }

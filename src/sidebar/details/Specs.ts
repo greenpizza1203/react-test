@@ -1,6 +1,6 @@
 import {IPlayer, IProperty, IRailroad, IStreet, ITile, IUtility} from "monocommon";
 import {formatMoney} from "../../utils/FormatMoney";
-import {state} from "../../state";
+import {info} from "../../info";
 
 
 export function getPlayerSpecs({money, cards}: IPlayer) {
@@ -30,7 +30,7 @@ export function getPropertyDetails(prop: IProperty) {
     );
     if (prop.ownerId) {
         stats.unshift(
-            `Owner: ${state.players[prop.ownerId].username}`
+            `Owner: ${info.players[prop.ownerId].username}`
         )
     }
     return stats

@@ -15,27 +15,44 @@ let config = {
         rules: [
             {
                 test: /\.svg$/,
-                use: ['react-svg-loader']
+                loader: 'react-svg-loader'
             },
             {
                 test: [/\.tsx?$/],
+                loader: 'ts-loader',
+                options: {
+                    transpileOnly: true,
+                    experimentalWatchApi: true,
+                },
+            },
+            {
+                test: /\.scss$/,
                 use: [
                     {
-                        loader: 'ts-loader',
+                        loader: 'style-loader',
                         options: {
-                            transpileOnly: true,
-                            experimentalWatchApi: true,
-                        },
+                            esModule: true,
+                            modules: {
+                                namedExport: true
+                            }
+                        }
                     },
-                ],
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            esModule: true,
+                            modules: {
+                                namedExport: true
+                            }
+                        }
+                    },
+                    'sass-loader']
             },
 
         ]
     },
     devtool: false,
-    performance: {
-        hints: false
-    },
+    performance: {hints: false},
     plugins: [],
     devServer: {stats: "minimal"},
 };
@@ -55,6 +72,8 @@ module.exports = (env, options) => {
                 }),
             ],
         }
+    } else {
+        config.module.rules[2].use[1].options.modules.localIdentName = "[local]"
     }
 
     return config

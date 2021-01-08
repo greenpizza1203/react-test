@@ -1,6 +1,8 @@
 import {IPlayer, ITile} from "monocommon";
 import React from "react";
 import {getPlayerSpecs, getTileSpecs} from "./details/Specs";
+// @ts-ignore
+import * as styles from '../../css/left/details.module.scss';
 
 export class Details extends React.Component<{ target?: IPlayer | ITile }> {
     render() {
@@ -8,9 +10,9 @@ export class Details extends React.Component<{ target?: IPlayer | ITile }> {
         if (!tile) return null;
         let borderColor = this.props.target['color'] ?? 'black';
         return (
-            <div className="details" style={{borderColor}}>
-                <div className="details-title">{this.getTitle()}</div>
-                <div className="details-specs">{this.getSpecs().join('\n')}</div>
+            <div className={styles.details} style={{borderColor}}>
+                <div className={styles.title}>{this.getTitle()}</div>
+                <div className={styles.specs}>{this.getSpecs().join('\n')}</div>
             </div>
         )
     }

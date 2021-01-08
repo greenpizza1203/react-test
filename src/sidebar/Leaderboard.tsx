@@ -1,12 +1,13 @@
 import {IPlayer, IState} from "monocommon";
 import React from "react";
 import {formatMoney} from "../utils/FormatMoney";
+import * as styles from '../../css/left/leaderboard.module.scss';
 
 export class Leaderboard extends React.Component<{ info: IState, onMouseOver: (target: IPlayer) => void }> {
     render() {
         let info = this.props.info;
         return (
-            <div className="leaderboard">
+            <div className={styles.leaderboard}>
                 {info.playerIds.map((id, index) =>
                     <LeaderboardRow player={info.players[id]} parity={index % 2 == 0} key={id}
                                     onMouseOver={this.props.onMouseOver}/>
@@ -20,16 +21,17 @@ export class LeaderboardRow extends React.Component<{ player: IPlayer, parity: b
     render() {
         let player = this.props.player;
         let mouseOver = () => this.props.onMouseOver(player);
-        const parity = this.props.parity ? 'even' : 'odd'
+        const parity = this.props.parity ? styles.even : styles.odd
         let color = player.color;
         return (
             <>
-                <div className="leaderboard-color" style={{background: color}}
+                <div className={styles.leaderboardColor} style={{background: color}}
                      onMouseEnter={mouseOver}/>
-                <div className={`leaderboard-name ${parity}`} style={{color}}
+                <div className={`${styles.leaderboardName} ${parity}`} style={{color}}
                      onMouseEnter={mouseOver}>{player.username} </div>
-                <div className={`leaderboard-money ${parity}`}
+                <div className={`${styles.leaderboardMoney} ${parity}`}
                      onMouseEnter={mouseOver}>{formatMoney(player.money)} </div>
+                <div className={parity}/>
             </>
         )
     }

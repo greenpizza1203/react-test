@@ -5,15 +5,16 @@ import hotel from '../../../assets/images/street/hotel.svg';
 import house from '../../../assets/images/street/house.svg';
 import upgrade from '../../../assets/images/street/upgrade.svg';
 import downgrade from '../../../assets/images/street/downgrade.svg';
+import * as styles from "../../../css/board/street.module.scss"
 
 export class HouseUI extends React.Component<{ info: IStreet }> {
     render() {
         const info = this.props.info;
 
         return (
-            <div className="ui">
+            <div className={styles.ui}>
                 <HouseUIButton action="upgrade" info={info}/>
-                <div className="level">
+                <div className={styles.level}>
                     <div>{info.level}</div>
                 </div>
                 <HouseUIButton action="downgrade" info={info}/>
@@ -28,10 +29,11 @@ export class Houses extends React.Component<{ level: number }> {
         const images: string[] = (this.props.level == 5) ? ['hotel'] : array(this.props.level, 'house')
         const map = {house, hotel}
         return (
-            <div className="houses">
+            <div className={styles.houses}>
                 {images.map((image, index) => {
                     const Tag = map[image]
-                    return <Tag className={image} key={index}/>;
+                    const className = image === 'house' ? styles.house : styles.hotel;
+                    return <Tag className={className} key={index}/>;
                 })}
             </div>
 
@@ -42,9 +44,9 @@ export class Houses extends React.Component<{ level: number }> {
 
 class HouseUIButton extends React.Component<{ action, info: IStreet }> {
     render() {
-        const image = (this.props.action == "upgrade") ? upgrade : downgrade
+        const Image = (this.props.action == "upgrade") ? upgrade : downgrade
         return (
-            <img src={image} onClick={this.onClick}/>
+            <div onClick={this.onClick}><Image/></div>
         )
     }
 

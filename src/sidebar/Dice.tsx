@@ -1,5 +1,6 @@
 import React from "react";
 import {DiceBox} from "monodice";
+import * as styles from "../../css/right/right_sidebar.module.scss"
 
 export class Dice extends React.Component {
     componentDidMount() {
@@ -11,7 +12,7 @@ export class Dice extends React.Component {
     }
 
     render() {
-        return <div className="dice" id={"threeHolder"}/>
+        return <div className={styles.dice} id={"threeHolder"}/>
 
     }
 
