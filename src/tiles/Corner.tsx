@@ -26,7 +26,7 @@ export abstract class Corner extends React.Component<{ info: ICorner }> {
         let filename = this.props.info.split_name;
         let Corner = corners[filename];
         let className = styleNames[filename]
-        console.log(className)
+        // console.log(className)
         return <Corner className={className}/>
     }
 

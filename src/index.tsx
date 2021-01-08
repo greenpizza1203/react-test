@@ -6,7 +6,7 @@ import {App} from "./App";
 import {setRoom} from "./info";
 
 const node = document.createElement("div")
-node.id="root";
+node.id = "root";
 document.body.appendChild(node)
 new Client("ws://localhost:2567").joinOrCreate().then((room) => {
     setRoom(room)
