@@ -73,7 +73,7 @@ module.exports = (env, options) => {
             ],
         }
     } else {
-        config.module.rules[2].use[1].options.modules.localIdentName = "[local]"
+        // config.module.rules[2].use[1].options.modules.localIdentName = "[local]"
     }
 
     return config
